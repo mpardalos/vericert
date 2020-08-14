@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<title>vericert.Compiler</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">vericert.Compiler</h1>
+
+<div class="code">
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+<span class="id" title="keyword">Parameter</span> <a name="print_RTL"><span class="id" title="axiom">print_RTL</span></a>: <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Numbers.BinNums.html#Z"><span class="id" title="inductive">Z</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <span class="id" title="definition">RTL.program</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#unit"><span class="id" title="inductive">unit</span></a>.<br/>
+<span class="id" title="keyword">Parameter</span> <a name="print_HTL"><span class="id" title="axiom">print_HTL</span></a>: <a class="idref" href="vericert.verilog.HTL.html#program"><span class="id" title="definition">HTL.program</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#unit"><span class="id" title="inductive">unit</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="print"><span class="id" title="definition">print</span></a> {<span class="id" title="var">A</span>: <span class="id" title="keyword">Type</span>} (<span class="id" title="var">printer</span>: <a class="idref" href="vericert.Compiler.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#unit"><span class="id" title="inductive">unit</span></a>) (<span class="id" title="var">prog</span>: <a class="idref" href="vericert.Compiler.html#A"><span class="id" title="variable">A</span></a>) : <a class="idref" href="vericert.Compiler.html#A"><span class="id" title="variable">A</span></a> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">unused</span> := <a class="idref" href="vericert.Compiler.html#printer"><span class="id" title="variable">printer</span></a> <a class="idref" href="vericert.Compiler.html#prog"><span class="id" title="variable">prog</span></a> <span class="id" title="tactic">in</span> <a class="idref" href="vericert.Compiler.html#prog"><span class="id" title="variable">prog</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Lemma</span> <a name="print_identity"><span class="id" title="lemma">print_identity</span></a>:<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">forall</span> (<span class="id" title="var">A</span>: <span class="id" title="keyword">Type</span>) (<span class="id" title="var">printer</span>: <a class="idref" href="vericert.Compiler.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#unit"><span class="id" title="inductive">unit</span></a>) (<span class="id" title="var">prog</span>: <a class="idref" href="vericert.Compiler.html#A"><span class="id" title="variable">A</span></a>),<br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#print"><span class="id" title="definition">print</span></a> <a class="idref" href="vericert.Compiler.html#printer"><span class="id" title="variable">printer</span></a> <a class="idref" href="vericert.Compiler.html#prog"><span class="id" title="variable">prog</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="vericert.Compiler.html#prog"><span class="id" title="variable">prog</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Notation</span> <a name="f3336851eb9c6aaeed5b0d2400d76cb6"><span class="id" title="notation">&quot;</span></a>a @@@ b" :=<br/>
+&nbsp;&nbsp;&nbsp;(<span class="id" title="definition">Compiler.apply_partial</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">a</span> <span class="id" title="var">b</span>) (<span class="id" title="tactic">at</span> <span class="id" title="keyword">level</span> 50, <span class="id" title="tactic">left</span> <span class="id" title="keyword">associativity</span>).<br/>
+<span class="id" title="keyword">Notation</span> <a name="fbf73d74852c6c7aca59d27fe115b489"><span class="id" title="notation">&quot;</span></a>a @@ b" :=<br/>
+&nbsp;&nbsp;(<span class="id" title="definition">Compiler.apply_total</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">a</span> <span class="id" title="var">b</span>) (<span class="id" title="tactic">at</span> <span class="id" title="keyword">level</span> 50, <span class="id" title="tactic">left</span> <span class="id" title="keyword">associativity</span>).<br/>
+
+<br/>
+<span class="id" title="keyword">Lemma</span> <a name="compose_print_identity"><span class="id" title="lemma">compose_print_identity</span></a>:<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">forall</span> (<span class="id" title="var">A</span>: <span class="id" title="keyword">Type</span>) (<span class="id" title="var">x</span>: <span class="id" title="inductive">res</span> <a class="idref" href="vericert.Compiler.html#A"><span class="id" title="variable">A</span></a>) (<span class="id" title="var">f</span>: <a class="idref" href="vericert.Compiler.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#unit"><span class="id" title="inductive">unit</span></a>),<br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="vericert.Compiler.html#fbf73d74852c6c7aca59d27fe115b489"><span class="id" title="notation">@@</span></a> <a class="idref" href="vericert.Compiler.html#print"><span class="id" title="definition">print</span></a> <a class="idref" href="vericert.Compiler.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="vericert.Compiler.html#x"><span class="id" title="variable">x</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="transf_backend"><span class="id" title="definition">transf_backend</span></a> (<span class="id" title="var">r</span> : <span class="id" title="definition">RTL.program</span>) : <span class="id" title="inductive">res</span> <a class="idref" href="vericert.verilog.Verilog.html#program"><span class="id" title="definition">Verilog.program</span></a> :=<br/>
+&nbsp;&nbsp;<span class="id" title="constructor">OK</span> <a class="idref" href="vericert.Compiler.html#r"><span class="id" title="variable">r</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#f3336851eb9c6aaeed5b0d2400d76cb6"><span class="id" title="notation">@@@</span></a> <span class="id" title="definition">Inlining.transf_program</span><br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#fbf73d74852c6c7aca59d27fe115b489"><span class="id" title="notation">@@</span></a> <a class="idref" href="vericert.Compiler.html#print"><span class="id" title="definition">print</span></a> (<a class="idref" href="vericert.Compiler.html#print_RTL"><span class="id" title="axiom">print_RTL</span></a> 1)<br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#f3336851eb9c6aaeed5b0d2400d76cb6"><span class="id" title="notation">@@@</span></a> <a class="idref" href="vericert.translation.HTLgen.html#transl_program"><span class="id" title="definition">HTLgen.transl_program</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#fbf73d74852c6c7aca59d27fe115b489"><span class="id" title="notation">@@</span></a> <a class="idref" href="vericert.Compiler.html#print"><span class="id" title="definition">print</span></a> <a class="idref" href="vericert.Compiler.html#print_HTL"><span class="id" title="axiom">print_HTL</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#fbf73d74852c6c7aca59d27fe115b489"><span class="id" title="notation">@@</span></a> <a class="idref" href="vericert.translation.Veriloggen.html#transl_program"><span class="id" title="definition">Veriloggen.transl_program</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="transf_hls"><span class="id" title="definition">transf_hls</span></a> (<span class="id" title="var">p</span> : <span class="id" title="definition">Csyntax.program</span>) : <span class="id" title="inductive">res</span> <a class="idref" href="vericert.verilog.Verilog.html#program"><span class="id" title="definition">Verilog.program</span></a> :=<br/>
+&nbsp;&nbsp;<span class="id" title="constructor">OK</span> <a class="idref" href="vericert.Compiler.html#p"><span class="id" title="variable">p</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#f3336851eb9c6aaeed5b0d2400d76cb6"><span class="id" title="notation">@@@</span></a> <span class="id" title="definition">SimplExpr.transl_program</span><br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#f3336851eb9c6aaeed5b0d2400d76cb6"><span class="id" title="notation">@@@</span></a> <span class="id" title="definition">SimplLocals.transf_program</span><br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#f3336851eb9c6aaeed5b0d2400d76cb6"><span class="id" title="notation">@@@</span></a> <span class="id" title="definition">Cshmgen.transl_program</span><br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#f3336851eb9c6aaeed5b0d2400d76cb6"><span class="id" title="notation">@@@</span></a> <span class="id" title="definition">Cminorgen.transl_program</span><br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#f3336851eb9c6aaeed5b0d2400d76cb6"><span class="id" title="notation">@@@</span></a> <span class="id" title="definition">Selection.sel_program</span><br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#f3336851eb9c6aaeed5b0d2400d76cb6"><span class="id" title="notation">@@@</span></a> <span class="id" title="definition">RTLgen.transl_program</span><br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#fbf73d74852c6c7aca59d27fe115b489"><span class="id" title="notation">@@</span></a> <a class="idref" href="vericert.Compiler.html#print"><span class="id" title="definition">print</span></a> (<a class="idref" href="vericert.Compiler.html#print_RTL"><span class="id" title="axiom">print_RTL</span></a> 0)<br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#f3336851eb9c6aaeed5b0d2400d76cb6"><span class="id" title="notation">@@@</span></a> <a class="idref" href="vericert.Compiler.html#transf_backend"><span class="id" title="definition">transf_backend</span></a>.<br/>
+
+<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="CompCert's_passes"><span class="id" title="definition">CompCert's_passes</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="constructor">mkpass</span> <span class="id" title="definition">SimplExprproof.match_prog</span><br/>
+&nbsp;&nbsp;<span class="id" title="notation">:::</span> <span class="id" title="constructor">mkpass</span> <span class="id" title="definition">SimplLocalsproof.match_prog</span><br/>
+&nbsp;&nbsp;<span class="id" title="notation">:::</span> <span class="id" title="constructor">mkpass</span> <span class="id" title="definition">Cshmgenproof.match_prog</span><br/>
+&nbsp;&nbsp;<span class="id" title="notation">:::</span> <span class="id" title="constructor">mkpass</span> <span class="id" title="definition">Cminorgenproof.match_prog</span><br/>
+&nbsp;&nbsp;<span class="id" title="notation">:::</span> <span class="id" title="constructor">mkpass</span> <span class="id" title="definition">Selectionproof.match_prog</span><br/>
+&nbsp;&nbsp;<span class="id" title="notation">:::</span> <span class="id" title="constructor">mkpass</span> <span class="id" title="definition">RTLgenproof.match_prog</span><br/>
+&nbsp;&nbsp;<span class="id" title="notation">:::</span> <span class="id" title="constructor">mkpass</span> <span class="id" title="definition">Inliningproof.match_prog</span><br/>
+&nbsp;&nbsp;<span class="id" title="notation">:::</span> <span class="id" title="notation">(</span>@<span class="id" title="constructor">mkpass</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <a class="idref" href="vericert.translation.HTLgenproof.html#match_prog"><span class="id" title="definition">HTLgenproof.match_prog</span></a> (<a class="idref" href="vericert.translation.HTLgenproof.html#TransfHTLLink"><span class="id" title="instance">HTLgenproof.TransfHTLLink</span></a> <a class="idref" href="vericert.translation.HTLgen.html#transl_program"><span class="id" title="definition">HTLgen.transl_program</span></a>)<span class="id" title="notation">)</span><br/>
+&nbsp;&nbsp;<span class="id" title="notation">:::</span> <span class="id" title="constructor">mkpass</span> <a class="idref" href="vericert.translation.Veriloggenproof.html#match_prog"><span class="id" title="definition">Veriloggenproof.match_prog</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="notation">:::</span> <span class="id" title="constructor">pass_nil</span> <span class="id" title="var">_</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="match_prog"><span class="id" title="definition">match_prog</span></a>: <span class="id" title="definition">Csyntax.program</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="vericert.verilog.Verilog.html#program"><span class="id" title="definition">Verilog.program</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <span class="id" title="keyword">Prop</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="projection">pass_match</span> (<span class="id" title="definition">compose_passes</span> <a class="idref" href="vericert.Compiler.html#CompCert's_passes"><span class="id" title="definition">CompCert's_passes</span></a>).<br/>
+
+<br/>
+<span class="id" title="keyword">Theorem</span> <a name="transf_hls_match"><span class="id" title="lemma">transf_hls_match</span></a>:<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">forall</span> <span class="id" title="var">p</span> <span class="id" title="var">tp</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#transf_hls"><span class="id" title="definition">transf_hls</span></a> <a class="idref" href="vericert.Compiler.html#p"><span class="id" title="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <span class="id" title="constructor">OK</span> <a class="idref" href="vericert.Compiler.html#tp"><span class="id" title="variable">tp</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#match_prog"><span class="id" title="definition">match_prog</span></a> <a class="idref" href="vericert.Compiler.html#p"><span class="id" title="variable">p</span></a> <a class="idref" href="vericert.Compiler.html#tp"><span class="id" title="variable">tp</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Remark</span> <a name="forward_simulation_identity"><span class="id" title="lemma">forward_simulation_identity</span></a>:<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">forall</span> <span class="id" title="var">sem</span>, <span class="id" title="inductive">forward_simulation</span> <a class="idref" href="vericert.Compiler.html#sem"><span class="id" title="variable">sem</span></a> <a class="idref" href="vericert.Compiler.html#sem"><span class="id" title="variable">sem</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Theorem</span> <a name="cstrategy_semantic_preservation"><span class="id" title="lemma">cstrategy_semantic_preservation</span></a>:<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">forall</span> <span class="id" title="var">p</span> <span class="id" title="var">tp</span>,<br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#match_prog"><span class="id" title="definition">match_prog</span></a> <a class="idref" href="vericert.Compiler.html#p"><span class="id" title="variable">p</span></a> <a class="idref" href="vericert.Compiler.html#tp"><span class="id" title="variable">tp</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="inductive">forward_simulation</span> (<span class="id" title="definition">Cstrategy.semantics</span> <a class="idref" href="vericert.Compiler.html#p"><span class="id" title="variable">p</span></a>) (<a class="idref" href="vericert.verilog.Verilog.html#semantics"><span class="id" title="definition">Verilog.semantics</span></a> <a class="idref" href="vericert.Compiler.html#tp"><span class="id" title="variable">tp</span></a>)<br/>
+&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#ba2b0e492d2b4675a0acf3ea92aabadd"><span class="id" title="notation">/\</span></a> <span class="id" title="inductive">backward_simulation</span> (<span class="id" title="definition">atomic</span> (<span class="id" title="definition">Cstrategy.semantics</span> <a class="idref" href="vericert.Compiler.html#p"><span class="id" title="variable">p</span></a>)) (<a class="idref" href="vericert.verilog.Verilog.html#semantics"><span class="id" title="definition">Verilog.semantics</span></a> <a class="idref" href="vericert.Compiler.html#tp"><span class="id" title="variable">tp</span></a>).<br/>
+
+<br/>
+<span class="id" title="keyword">Theorem</span> <a name="c_semantic_preservation"><span class="id" title="lemma">c_semantic_preservation</span></a>:<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">forall</span> <span class="id" title="var">p</span> <span class="id" title="var">tp</span>,<br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#match_prog"><span class="id" title="definition">match_prog</span></a> <a class="idref" href="vericert.Compiler.html#p"><span class="id" title="variable">p</span></a> <a class="idref" href="vericert.Compiler.html#tp"><span class="id" title="variable">tp</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="inductive">backward_simulation</span> (<span class="id" title="definition">Csem.semantics</span> <a class="idref" href="vericert.Compiler.html#p"><span class="id" title="variable">p</span></a>) (<a class="idref" href="vericert.verilog.Verilog.html#semantics"><span class="id" title="definition">Verilog.semantics</span></a> <a class="idref" href="vericert.Compiler.html#tp"><span class="id" title="variable">tp</span></a>).<br/>
+
+<br/>
+<span class="id" title="keyword">Theorem</span> <a name="transf_c_program_correct"><span class="id" title="lemma">transf_c_program_correct</span></a>:<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">forall</span> <span class="id" title="var">p</span> <span class="id" title="var">tp</span>,<br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.Compiler.html#transf_hls"><span class="id" title="definition">transf_hls</span></a> <a class="idref" href="vericert.Compiler.html#p"><span class="id" title="variable">p</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <span class="id" title="constructor">OK</span> <a class="idref" href="vericert.Compiler.html#tp"><span class="id" title="variable">tp</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="inductive">backward_simulation</span> (<span class="id" title="definition">Csem.semantics</span> <a class="idref" href="vericert.Compiler.html#p"><span class="id" title="variable">p</span></a>) (<a class="idref" href="vericert.verilog.Verilog.html#semantics"><span class="id" title="definition">Verilog.semantics</span></a> <a class="idref" href="vericert.Compiler.html#tp"><span class="id" title="variable">tp</span></a>).<br/>
+
+<br/>
+<span class="id" title="keyword">Theorem</span> <a name="separate_transf_c_program_correct"><span class="id" title="lemma">separate_transf_c_program_correct</span></a>:<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">forall</span> <span class="id" title="var">c_units</span> <span class="id" title="var">verilog_units</span> <span class="id" title="var">c_program</span>,<br/>
+&nbsp;&nbsp;<span class="id" title="inductive">nlist_forall2</span> (<span class="id" title="keyword">fun</span> <span class="id" title="var">cu</span> <span class="id" title="var">tcu</span> =&gt; <a class="idref" href="vericert.Compiler.html#transf_hls"><span class="id" title="definition">transf_hls</span></a> <a class="idref" href="vericert.Compiler.html#cu"><span class="id" title="variable">cu</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <span class="id" title="constructor">OK</span> <a class="idref" href="vericert.Compiler.html#tcu"><span class="id" title="variable">tcu</span></a>) <a class="idref" href="vericert.Compiler.html#c_units"><span class="id" title="variable">c_units</span></a> <a class="idref" href="vericert.Compiler.html#verilog_units"><span class="id" title="variable">verilog_units</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="definition">link_list</span> <a class="idref" href="vericert.Compiler.html#c_units"><span class="id" title="variable">c_units</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#Some"><span class="id" title="constructor">Some</span></a> <a class="idref" href="vericert.Compiler.html#c_program"><span class="id" title="variable">c_program</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a><br/>
+&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#a883bdd010993579f99d60b3775bcf54"><span class="id" title="notation">exists</span></a> <span class="id" title="var">verilog_program</span><a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#a883bdd010993579f99d60b3775bcf54"><span class="id" title="notation">,</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="definition">link_list</span> <a class="idref" href="vericert.Compiler.html#verilog_units"><span class="id" title="variable">verilog_units</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#Some"><span class="id" title="constructor">Some</span></a> <a class="idref" href="vericert.Compiler.html#verilog_program"><span class="id" title="variable">verilog_program</span></a><br/>
+&nbsp;&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#ba2b0e492d2b4675a0acf3ea92aabadd"><span class="id" title="notation">/\</span></a> <span class="id" title="inductive">backward_simulation</span> (<span class="id" title="definition">Csem.semantics</span> <a class="idref" href="vericert.Compiler.html#c_program"><span class="id" title="variable">c_program</span></a>) (<a class="idref" href="vericert.verilog.Verilog.html#semantics"><span class="id" title="definition">Verilog.semantics</span></a> <a class="idref" href="vericert.Compiler.html#verilog_program"><span class="id" title="variable">verilog_program</span></a>).<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<title>vericert.common.Show</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">vericert.common.Show</h1>
+
+<div class="code">
+
+<br/>
+
+<br/>
+
+<br/>
+<span class="id" title="keyword">Class</span> <a name="Show"><span class="id" title="record">Show</span></a> <span class="id" title="var">A</span> : <span class="id" title="keyword">Type</span> :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;<a name="show"><span class="id" title="projection">show</span></a> : <a class="idref" href="vericert.common.Show.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Strings.String.html#string"><span class="id" title="inductive">string</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a name="showBool"><span class="id" title="instance">showBool</span></a> : <a class="idref" href="vericert.common.Show.html#Show"><span class="id" title="class">Show</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#bool"><span class="id" title="inductive">bool</span></a> :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.common.Show.html#show"><span class="id" title="method">show</span></a> := <span class="id" title="keyword">fun</span> <span class="id" title="var">b</span>:<a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#bool"><span class="id" title="inductive">bool</span></a> =&gt; <span class="id" title="keyword">if</span> <a class="idref" href="vericert.common.Show.html#b"><span class="id" title="variable">b</span></a> <span class="id" title="keyword">then</span> "true" <span class="id" title="keyword">else</span> "false"<br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" title="keyword">Fixpoint</span> <a name="string_of_nat_aux"><span class="id" title="definition">string_of_nat_aux</span></a> (<span class="id" title="var">time</span> <span class="id" title="var">n</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) (<span class="id" title="var">acc</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Strings.String.html#string"><span class="id" title="inductive">string</span></a>) : <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Strings.String.html#string"><span class="id" title="inductive">string</span></a> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">d</span> := <span class="id" title="keyword">match</span> <a class="idref" href="vericert.common.Show.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Arith.PeanoNat.html#85a832f976269ade81715ff3b306c568"><span class="id" title="notation">mod</span></a> 10 <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 0 =&gt; "0" | 1 =&gt; "1" | 2 =&gt; "2" | 3 =&gt; "3" | 4 =&gt; "4" | 5 =&gt; "5"<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 6 =&gt; "6" | 7 =&gt; "7" | 8 =&gt; "8" | <span class="id" title="var">_</span> =&gt; "9"<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">acc'</span> := <a class="idref" href="vericert.common.Show.html#d"><span class="id" title="variable">d</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Strings.String.html#169ad156fbc6036a53a0338819a2b301"><span class="id" title="notation">++</span></a> <a class="idref" href="vericert.common.Show.html#acc"><span class="id" title="variable">acc</span></a> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="vericert.common.Show.html#time"><span class="id" title="variable">time</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| 0 =&gt; <a class="idref" href="vericert.common.Show.html#acc'"><span class="id" title="variable">acc'</span></a><br/>
+&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> <span class="id" title="var">time'</span> =&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="vericert.common.Show.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Arith.PeanoNat.html#2e0d8202c5a48097752d760d3a1db6a7"><span class="id" title="notation">/</span></a> 10 <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| 0 =&gt; <a class="idref" href="vericert.common.Show.html#acc'"><span class="id" title="variable">acc'</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">n'</span> =&gt; <a class="idref" href="vericert.common.Show.html#string_of_nat_aux"><span class="id" title="definition">string_of_nat_aux</span></a> <span class="id" title="var">time'</span> <span class="id" title="var">n'</span> <a class="idref" href="vericert.common.Show.html#acc'"><span class="id" title="variable">acc'</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="string_of_nat"><span class="id" title="definition">string_of_nat</span></a> (<span class="id" title="var">n</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) : <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Strings.String.html#string"><span class="id" title="inductive">string</span></a> :=<br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.common.Show.html#string_of_nat_aux"><span class="id" title="definition">string_of_nat_aux</span></a> <a class="idref" href="vericert.common.Show.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="vericert.common.Show.html#n"><span class="id" title="variable">n</span></a> "".<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a name="showNat"><span class="id" title="instance">showNat</span></a> : <a class="idref" href="vericert.common.Show.html#Show"><span class="id" title="class">Show</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a> :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.common.Show.html#show"><span class="id" title="method">show</span></a> := <a class="idref" href="vericert.common.Show.html#string_of_nat"><span class="id" title="definition">string_of_nat</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a name="showZ"><span class="id" title="instance">showZ</span></a> : <a class="idref" href="vericert.common.Show.html#Show"><span class="id" title="class">Show</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Numbers.BinNums.html#Z"><span class="id" title="inductive">Z</span></a> :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.common.Show.html#show"><span class="id" title="method">show</span></a> <span class="id" title="var">a</span> := <a class="idref" href="vericert.common.Show.html#show"><span class="id" title="method">show</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.ZArith.BinInt.html#Z.to_nat"><span class="id" title="definition">Z.to_nat</span></a> <a class="idref" href="vericert.common.Show.html#a"><span class="id" title="variable">a</span></a>)<br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a name="showPositive"><span class="id" title="instance">showPositive</span></a> : <a class="idref" href="vericert.common.Show.html#Show"><span class="id" title="class">Show</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Numbers.BinNums.html#positive"><span class="id" title="inductive">positive</span></a> :=<br/>
+&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;<a class="idref" href="vericert.common.Show.html#show"><span class="id" title="method">show</span></a> <span class="id" title="var">a</span> := <a class="idref" href="vericert.common.Show.html#show"><span class="id" title="method">show</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Numbers.BinNums.html#Zpos"><span class="id" title="constructor">Zpos</span></a> <a class="idref" href="vericert.common.Show.html#a"><span class="id" title="variable">a</span></a>)<br/>
+&nbsp;&nbsp;}.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

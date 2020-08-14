@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<title>vericert.common.Maps</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">vericert.common.Maps</h1>
+
+<div class="code">
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Instance of traverse for <span class="inlinecode"><span class="id" title="var">PTree</span></span> and <span class="inlinecode"><span class="id" title="var">Errors</span></span>. This should maybe be generalised
+    in the future. 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Module</span> <a name="PTree"><span class="id" title="module">PTree</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Fixpoint</span> <a name="PTree.xtraverse"><span class="id" title="definition">xtraverse</span></a> (<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <span class="id" title="keyword">Type</span>) (<span class="id" title="var">f</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Numbers.BinNums.html#positive"><span class="id" title="inductive">positive</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="vericert.common.Maps.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <span class="id" title="inductive">res</span> <a class="idref" href="vericert.common.Maps.html#B"><span class="id" title="variable">B</span></a>) (<span class="id" title="var">m</span> : <span class="id" title="definition">PTree.t</span> <a class="idref" href="vericert.common.Maps.html#A"><span class="id" title="variable">A</span></a>) (<span class="id" title="var">i</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Numbers.BinNums.html#positive"><span class="id" title="inductive">positive</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<span class="id" title="keyword">struct</span> <span class="id" title="var">m</span>} : <span class="id" title="inductive">res</span> (<span class="id" title="definition">PTree.t</span> <a class="idref" href="vericert.common.Maps.html#B"><span class="id" title="variable">B</span></a>) :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="vericert.common.Maps.html#m"><span class="id" title="variable">m</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <span class="id" title="constructor">Leaf</span> =&gt; <span class="id" title="constructor">OK</span> <span class="id" title="constructor">Leaf</span><br/>
+&nbsp;&nbsp;| <span class="id" title="constructor">Node</span> <span class="id" title="var">l</span> <span class="id" title="var">o</span> <span class="id" title="var">r</span> =&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">let</span> <span class="id" title="var">newo</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">match</span> <span class="id" title="var">o</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#None"><span class="id" title="constructor">None</span></a> =&gt; <span class="id" title="constructor">OK</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#None"><span class="id" title="constructor">None</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#Some"><span class="id" title="constructor">Some</span></a> <span class="id" title="var">x</span> =&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="vericert.common.Maps.html#f"><span class="id" title="variable">f</span></a> (<span class="id" title="definition">prev</span> <a class="idref" href="vericert.common.Maps.html#i"><span class="id" title="variable">i</span></a>) <span class="id" title="var">x</span> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="constructor">Error</span> <span class="id" title="var">err</span> =&gt; <span class="id" title="constructor">Error</span> <span class="id" title="var">err</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="constructor">OK</span> <span class="id" title="var">val</span> =&gt; <span class="id" title="constructor">OK</span> (<a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Datatypes.html#Some"><span class="id" title="constructor">Some</span></a> <span class="id" title="var">val</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span> <span class="id" title="tactic">in</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="vericert.common.Maps.html#newo"><span class="id" title="variable">newo</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="constructor">OK</span> <span class="id" title="keyword">no</span> =&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="notation">do</span> <span class="id" title="var">nl</span> <span class="id" title="notation">&lt;-</span> <a class="idref" href="vericert.common.Maps.html#xtraverse"><span class="id" title="definition">xtraverse</span></a> <a class="idref" href="vericert.common.Maps.html#f"><span class="id" title="variable">f</span></a> <span class="id" title="var">l</span> (<a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Numbers.BinNums.html#xO"><span class="id" title="constructor">xO</span></a> <a class="idref" href="vericert.common.Maps.html#i"><span class="id" title="variable">i</span></a>)<span class="id" title="notation">;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="notation">do</span> <span class="id" title="var">nr</span> <span class="id" title="notation">&lt;-</span> <a class="idref" href="vericert.common.Maps.html#xtraverse"><span class="id" title="definition">xtraverse</span></a> <a class="idref" href="vericert.common.Maps.html#f"><span class="id" title="variable">f</span></a> <span class="id" title="var">r</span> (<a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Numbers.BinNums.html#xI"><span class="id" title="constructor">xI</span></a> <a class="idref" href="vericert.common.Maps.html#i"><span class="id" title="variable">i</span></a>)<span class="id" title="notation">;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="constructor">OK</span> (<span class="id" title="constructor">Node</span> <a class="idref" href="vericert.common.Maps.html#nl"><span class="id" title="variable">nl</span></a> <span class="id" title="keyword">no</span> <a class="idref" href="vericert.common.Maps.html#nr"><span class="id" title="variable">nr</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="constructor">Error</span> <span class="id" title="var">msg</span> =&gt; <span class="id" title="constructor">Error</span> <span class="id" title="var">msg</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="PTree.traverse"><span class="id" title="definition">traverse</span></a> (<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <span class="id" title="keyword">Type</span>) (<span class="id" title="var">f</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Numbers.BinNums.html#positive"><span class="id" title="inductive">positive</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="vericert.common.Maps.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <span class="id" title="inductive">res</span> <a class="idref" href="vericert.common.Maps.html#B"><span class="id" title="variable">B</span></a>) <span class="id" title="var">m</span> := <a class="idref" href="vericert.common.Maps.html#PTree.xtraverse"><span class="id" title="definition">xtraverse</span></a> <a class="idref" href="vericert.common.Maps.html#f"><span class="id" title="variable">f</span></a> <a class="idref" href="vericert.common.Maps.html#m"><span class="id" title="variable">m</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Numbers.BinNums.html#xH"><span class="id" title="constructor">xH</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="PTree.traverse1"><span class="id" title="definition">traverse1</span></a> (<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <span class="id" title="keyword">Type</span>) (<span class="id" title="var">f</span> : <a class="idref" href="vericert.common.Maps.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.11.2/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <span class="id" title="inductive">res</span> <a class="idref" href="vericert.common.Maps.html#B"><span class="id" title="variable">B</span></a>) := <a class="idref" href="vericert.common.Maps.html#PTree.traverse"><span class="id" title="definition">traverse</span></a> (<span class="id" title="keyword">fun</span> <span class="id" title="var">_</span> =&gt; <a class="idref" href="vericert.common.Maps.html#f"><span class="id" title="variable">f</span></a>).<br/>
+
+<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="vericert.common.Maps.html#PTree"><span class="id" title="module">PTree</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>
